@@ -5,6 +5,9 @@ on:
     branches:
       - '**'
 
+env:
+  DEVELOCITY_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_SECRET_ACCESS_KEY }}
+
 jobs:
   build:
     name: Build
@@ -15,10 +18,11 @@ jobs:
         jdk: [17]
       fail-fast: false
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up JDK ${{ matrix.jdk }}
-        uses: actions/setup-java@v1
+        uses: spring-io/spring-gradle-build-action@v2
         with:
           java-version: ${{ matrix.jdk }}
+          distribution: 'temurin'
       - name: Build with Gradle
         run: ./gradlew clean build
