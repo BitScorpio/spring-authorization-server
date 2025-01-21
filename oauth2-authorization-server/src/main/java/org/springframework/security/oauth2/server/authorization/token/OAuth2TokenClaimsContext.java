@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-2022 the original author or authors.
+ * Copyright 2020-2025 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,8 @@ import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
 /**
- * An {@link OAuth2TokenContext} implementation that provides access
- * to the {@link #getClaims() claims} of an OAuth 2.0 Token, allowing the ability to customize.
+ * An {@link OAuth2TokenContext} implementation that provides access to the
+ * {@link #getClaims() claims} of an OAuth 2.0 Token, allowing the ability to customize.
  *
  * @author Joe Grandja
  * @since 0.2.3
@@ -32,6 +32,7 @@ import org.springframework.util.Assert;
  * @see OAuth2TokenClaimsSet.Builder
  */
 public final class OAuth2TokenClaimsContext implements OAuth2TokenContext {
+
 	private final Map<Object, Object> context;
 
 	private OAuth2TokenClaimsContext(Map<Object, Object> context) {
@@ -52,9 +53,8 @@ public final class OAuth2TokenClaimsContext implements OAuth2TokenContext {
 	}
 
 	/**
-	 * Returns the {@link OAuth2TokenClaimsSet.Builder claims}
-	 * allowing the ability to add, replace, or remove.
-	 *
+	 * Returns the {@link OAuth2TokenClaimsSet.Builder claims} allowing the ability to
+	 * add, replace, or remove.
 	 * @return the {@link OAuth2TokenClaimsSet.Builder}
 	 */
 	public OAuth2TokenClaimsSet.Builder getClaims() {
@@ -63,7 +63,6 @@ public final class OAuth2TokenClaimsContext implements OAuth2TokenContext {
 
 	/**
 	 * Constructs a new {@link Builder} with the provided claims.
-	 *
 	 * @param claimsBuilder the claims to initialize the builder
 	 * @return the {@link Builder}
 	 */
@@ -83,9 +82,9 @@ public final class OAuth2TokenClaimsContext implements OAuth2TokenContext {
 
 		/**
 		 * Builds a new {@link OAuth2TokenClaimsContext}.
-		 *
 		 * @return the {@link OAuth2TokenClaimsContext}
 		 */
+		@Override
 		public OAuth2TokenClaimsContext build() {
 			return new OAuth2TokenClaimsContext(getContext());
 		}
